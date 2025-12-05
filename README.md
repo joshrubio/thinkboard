@@ -1,40 +1,37 @@
 # Thinkboard
 
-A full-stack notes application built with the MERN stack (MongoDB, Express.js, React, Node.js). Thinkboard allows users to create, read, update, and delete notes with a clean and responsive interface.
+A full-stack sensitive note-taking application built with the MERN stack (MongoDB, Express.js, React, Node.js). Thinkboard features a modern, responsive landing page and a functional dashboard for managing notes.
 
 ## Features
 
-- **Create Notes**: Add new notes with title and content
-- **View Notes**: Display all notes in a grid layout with the most recent first
-- **Edit Notes**: Update existing notes
-- **Delete Notes**: Remove notes permanently
-- **Rate Limiting**: Built-in rate limiting using Upstash Redis to prevent abuse
-- **Responsive Design**: Mobile-friendly UI using Tailwind CSS and DaisyUI
-- **Real-time Feedback**: Toast notifications for user actions
+- **Modern Landing Page**: A visually appealing entry point featuring animations and project insights using Framer Motion.
+- **Note Management**: Full CRUD capabilities (Create, Read, Update, Delete) for notes.
+- **Responsive Design**: Optimized for all devices using Tailwind CSS and DaisyUI.
+- **Interactive UI**: Smooth animations and transitions powered by Framer Motion.
+- **Real-time Feedback**: Toast notifications for user actions.
+- **Clean Interface**: A minimalist and distraction-free environment for thinking.
 
 ## Tech Stack
 
-### Backend
-- **Node.js** with Express.js
-- **MongoDB** with Mongoose ODM
-- **Upstash Redis** for rate limiting
-- **CORS** for cross-origin requests
-- **Dotenv** for environment variables
-
 ### Frontend
-- **React** with Vite
+- **React 19** with **Vite**
+- **Tailwind CSS** & **DaisyUI** for styling
+- **Framer Motion** for animations
 - **React Router** for navigation
-- **Axios** for API calls
-- **Tailwind CSS** and **DaisyUI** for styling
-- **React Hot Toast** for notifications
+- **Axios** for API requests
 - **Lucide React** for icons
+- **React Hot Toast** for notifications
+
+### Backend
+- **Node.js** & **Express.js**
+- **MongoDB** with **Mongoose ODM**
+- **CORS** & **Dotenv** configuration
 
 ## Installation
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (local or cloud instance)
-- Upstash Redis account (for rate limiting)
+- Node.js (v18 or higher recommended)
+- MongoDB (Local or Atlas connection string)
 
 ### Setup
 
@@ -45,42 +42,61 @@ A full-stack notes application built with the MERN stack (MongoDB, Express.js, R
    ```
 
 2. **Install dependencies:**
+   
+   **Root (optional, if using workspaces):**
    ```bash
    npm install
    ```
 
-3. **Environment Variables:**
-   Create a `.env` file in the `backend` directory with the following:
-   ```
-   MONGO_URI=your_mongodb_connection_string
-   UPSTASH_REDIS_REST_URL=your_upstash_redis_url
-   UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_token
-   NODE_ENV=development
-   PORT=5001
+   **Backend:**
+   ```bash
+   cd backend
+   npm install
    ```
 
-4. **Start the development servers:**
-   - Backend: `npm run dev` (from backend directory)
-   - Frontend: `npm run dev` (from frontend directory)
+   **Frontend:**
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+3. **Environment Variables:**
+   Create a `.env` file in the `backend` directory:
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   PORT=5001
+   NODE_ENV=development
+   ```
+
+4. **Start the application:**
+
+   **Backend:**
+   ```bash
+   # In terminal 1 (backend directory)
+   npm run dev
+   ```
+
+   **Frontend:**
+   ```bash
+   # In terminal 2 (frontend directory)
+   npm run dev
+   ```
 
 5. **Build for production:**
+   The backend is configured to serve the frontend in production.
    ```bash
+   # In frontend directory
    npm run build
+   
+   # In backend directory
    npm start
    ```
 
 ## Usage
 
-- Navigate to `http://localhost:5173` (frontend)
-- The backend runs on `http://localhost:5001`
-
-### API Endpoints
-
-- `GET /api/notes` - Get all notes
-- `GET /api/notes/:id` - Get a specific note
-- `POST /api/notes` - Create a new note
-- `PUT /api/notes/:id` - Update a note
-- `DELETE /api/notes/:id` - Delete a note
+- **Landing Page**: Visit `http://localhost:5173` to view the project overview and details.
+- **App Dashboard**: Navigate to the app section to start managing your notes.
+- **Backend API**: Running on `http://localhost:5001`.
 
 ## Project Structure
 
@@ -88,29 +104,21 @@ A full-stack notes application built with the MERN stack (MongoDB, Express.js, R
 thinkboard/
 ├── backend/
 │   ├── src/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── server.js
+│   │   ├── config/       # Database configuration
+│   │   ├── controllers/  # Route controllers
+│   │   ├── models/       # Mongoose models
+│   │   ├── routes/       # API routes
+│   │   └── server.js     # Entry point
 │   └── package.json
 ├── frontend/
 │   ├── src/
-│   │   ├── lib/
-│   │   ├── pages/
-│   │   └── App.jsx
+│   │   ├── lib/          # Utilities
+│   │   ├── pages/        # Page components (Landing, Home, Create, etc.)
+│   │   │   └── components/ # Page-specific components (Hero, TechStack, etc.)
+│   │   └── App.jsx       # Main application component
 │   └── package.json
-└── package.json
+└── README.md
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
 
 ## License
 
